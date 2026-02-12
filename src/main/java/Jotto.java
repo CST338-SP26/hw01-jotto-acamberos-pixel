@@ -2,8 +2,9 @@
  * @author Athian Camberos
  * @version 0.1.0
  * @Since 2/11/26
- * purpose: to make jotto game 
+ * purpose: to make jotto game
  **/
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Random;
@@ -39,7 +40,7 @@ public class Jotto {
 
             while (fileScanner.hasNextLine()) {
                 String word = fileScanner.nextLine().trim().toLowerCase();
-                // Check for duplicates before adding
+                // Check for duplicates
                 if (!wordList.contains(word) && !word.isEmpty()) {
                     wordList.add(word);
                 }
@@ -70,7 +71,8 @@ public class Jotto {
 
             String choice = scan.nextLine().trim().toLowerCase();
 
-            if (choice.equals("1") || choice.equals("one")) {
+            if (choice.equals("1") || choice.equals("one"))
+            {
                 if (!pickWord()) {
                     showPlayerGuesses();
                 } else {
@@ -102,7 +104,8 @@ public class Jotto {
         Random rand = new Random();
 
         // Check if all words have been played
-        if (playWords.size() >= wordList.size()) {
+        if (playWords.size() >= wordList.size())
+        {
             System.out.println("You've guessed them all!");
             return false;
         }
@@ -110,7 +113,7 @@ public class Jotto {
         // Pick a random word that hasn't been played
         currentWord = wordList.get(rand.nextInt(wordList.size()));
 
-        // If already played, do again
+        // If already played
         if (playWords.contains(currentWord)) {
             return pickWord();
         }
@@ -124,7 +127,7 @@ public class Jotto {
         return true;
     }
 
-    // Main guessing loop
+   //guess loop
     public int guess() {
         ArrayList<String> currentGuesses = new ArrayList<>();
         Scanner scan = new Scanner(System.in);
@@ -154,9 +157,9 @@ public class Jotto {
             // Add to player guesses
             addPlayerGuess(wordGuess);
 
-            // Check if correct
+            // Check if right
             if (wordGuess.equals(currentWord)) {
-                System.out.println("DINGDINGDING!!! the word was " + currentWord);
+                System.out.println("Thats right! the word was " + currentWord);
                 currentGuesses.add(wordGuess);
                 playerGuessScores(currentGuesses);
                 return score;
@@ -200,23 +203,18 @@ public class Jotto {
         }
 
 
-
         // Create a list of unique characters from currentWord
         ArrayList<Character> uniqueChars = new ArrayList<>();
-        for (char c : currentWord.toCharArray())
-        {
-            if (!uniqueChars.contains(c))
-            {
+        for (char c : currentWord.toCharArray()) {
+            if (!uniqueChars.contains(c)) {
                 uniqueChars.add(c);
             }
         }
 
         // Check each character in the guess
         ArrayList<Character> countedChars = new ArrayList<>();
-        for (char c : wordGuess.toCharArray())
-        {
-            if (uniqueChars.contains(c) && !countedChars.contains(c))
-            {
+        for (char c : wordGuess.toCharArray()) {
+            if (uniqueChars.contains(c) && !countedChars.contains(c)) {
                 count++;
                 countedChars.add(c);
 
@@ -247,8 +245,7 @@ public class Jotto {
 
     // Show words chosen by bot
     public String showPlayedWords() {
-        if (playWords.isEmpty())
-        {
+        if (playWords.isEmpty()) {
             return "No words have been played.";
         }
         StringBuilder sb = new StringBuilder("Current list of played words:\n");
@@ -270,8 +267,7 @@ public class Jotto {
         }
 
         Scanner scan = new Scanner(System.in);
-        if (!scan.hasNextLine())
-        {
+        if (!scan.hasNextLine()) {
             return playGuesses;
         }
         System.out.println("Would you like to add the words to the word list? (y/n)");
