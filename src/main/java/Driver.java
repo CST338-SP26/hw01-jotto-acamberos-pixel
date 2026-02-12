@@ -11,7 +11,7 @@ public class Driver {
 //        String filepath = "debug.txt";
 //        String filepath = "wordList.txt";
         Jotto game = new Jotto(filepath);
-//        game.play();
+       game.play();
 
 
         ArrayList<String> strings = new ArrayList<>();
