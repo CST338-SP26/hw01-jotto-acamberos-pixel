@@ -1,5 +1,5 @@
 /**
- * @author feng3302
+ * @author Athian Camberos
  * @version 0.1.0
  * @Since 1/29/26
  **/
@@ -188,11 +188,17 @@ public class Jotto {
 
     // Count matching letters between guess and current word
     public int getLetterCount(String wordGuess) {
+        //leetter count will start at 0 before function takes in letters
+        int count = 0;
+        wordGuess = wordGuess.toLowerCase();
+        currentWord = currentWord.toLowerCase();
+
+        // if user guess is equal to current word return the size
         if (wordGuess.equals(currentWord)) {
             return WORD_SIZE;
         }
 
-        int count = 0;
+
 
         // Create a list of unique characters from currentWord
         ArrayList<Character> uniqueChars = new ArrayList<>();
@@ -212,6 +218,7 @@ public class Jotto {
             {
                 count++;
                 countedChars.add(c);
+
                 uniqueChars.remove(Character.valueOf(c));
             }
         }
@@ -239,8 +246,9 @@ public class Jotto {
 
     // Show words chosen by bot
     public String showPlayedWords() {
-        if (playWords.isEmpty()) {
-            return "No words have been played";
+        if (playWords.isEmpty())
+        {
+            return "No words have been played.";
         }
         StringBuilder sb = new StringBuilder("Current list of played words:\n");
         for (String word : playWords) {
@@ -261,6 +269,10 @@ public class Jotto {
         }
 
         Scanner scan = new Scanner(System.in);
+        if (!scan.hasNextLine())
+        {
+            return playGuesses;
+        }
         System.out.println("Would you like to add the words to the word list? (y/n)");
         String response = scan.nextLine().trim().toLowerCase();
 
