@@ -1,7 +1,8 @@
 /**
  * @author Athian Camberos
  * @version 0.1.0
- * @Since 1/29/26
+ * @Since 2/11/26
+ * purpose: to make jotto game 
  **/
 import java.util.ArrayList;
 import java.util.Scanner;
